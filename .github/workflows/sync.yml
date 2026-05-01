@@ -12,7 +12,10 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - name: Push to hub
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force https://shwetaaank:$HF_TOKEN@huggingface.co/spaces/shwetaaank/RESUME-ANALYZER main
+      - name: Sync to HF
+        uses: huggingface/hub-sync@v1.0
+        with:
+          github_repo_id: shwetanksinghrajput/resume-analyzer
+          huggingface_repo_id: shwetaaank/RESUME-ANALYZER
+          hf_token: ${{ secrets.HF_TOKEN }}
+          repo_type: space
