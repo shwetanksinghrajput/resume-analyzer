@@ -1,8 +1,19 @@
 import streamlit as st
 import os
 import base64
+import subprocess
+import sys
+
+# --- FORCED SPACY INSTALLATION ---
+try:
+    import en_core_web_sm
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
+# ---------------------------------
+
 from engine.extractor import extract_text_from_pdf
 from engine.processor import ResumeProcessor
+# ... rest of your imports
 from engine.matcher import ResumeMatcher
 from engine.improver import ResumeImprover 
 
