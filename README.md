@@ -13,19 +13,16 @@ An elite, high-performance Applicant Tracking System (ATS) simulator and AI resu
 
 ## 📸 System Interface
 
-*(Note: Drag and drop your screenshots here to replace these placeholder lines!)*
 
-**1. The Command Center**
-`[Drop your ui-dashboard.png screenshot here]`
-
-**2. Quantum Scan & Match Results**<img width="1878" height="801" alt="pv1" src="https://github.com/user-attachments/assets/42c47fe7-eaa6-40ec-b3bf-6876829b1886" />
+**1. Command Interface**<img width="1878" height="801" alt="pv1" src="https://github.com/user-attachments/assets/42c47fe7-eaa6-40ec-b3bf-6876829b1886" />
 ![Uploading pv2.png…]()
 <img width="1878" height="801" alt="pv1" src="https://github.com/user-attachments/assets/eadd5ce4-31c3-4ee0-9c38-34e591e4d1b0" />
 
 `[Drop your scan-results.png screenshot here]`
 
-**3. Gemini AI Enhancements**
-`[Drop your ai-enhancements.png screenshot here]`
+**3. Gemini AI Enhancements and Matching Results**
+<img width="1878" height="801" alt="pv1" src="https://github.com/user-attachments/assets/eadd5ce4-31c3-4ee0-9c38-34e591e4d1b0" />
+
 
 ---
 
