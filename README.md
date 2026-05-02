@@ -22,7 +22,7 @@ An elite, high-performance Applicant Tracking System (ATS) simulator and AI resu
 
 
 
-**3. Gemini AI Enhancements and Match Results**
+**2. Gemini AI Enhancements and Match Results**
 <img width="1822" height="870" alt="pv2" src="https://github.com/user-attachments/assets/70fc2fa5-f22a-4d7d-8709-3068f0dee26e" />
 
 `[Drop your ai-enhancements.png screenshot here]`
@@ -66,6 +66,7 @@ This application is fully containerized and hosted in the cloud to ensure high a
 
 ## 💻 Local Installation
 
+
 To run the Quantum Resume Analyzer on your local machine:
 
 1. **Clone the repository:**
@@ -73,4 +74,4 @@ To run the Quantum Resume Analyzer on your local machine:
    git clone [https://github.com/shwetaaank/RESUME-ANALYZER.git](https://github.com/shwetaaank/RESUME-ANALYZER.git)
    cd RESUME-ANALYZER
 
-   Developed By: Shwetank Singh Rajput
+Developed By: Shwetank Singh Rajput
