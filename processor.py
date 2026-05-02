@@ -12,7 +12,8 @@ class ResumeProcessor:
             os.system("python -m spacy download en_core_web_sm")
             self.nlp = spacy.load("en_core_web_sm")
             
-        skills_path = os.path.join("data", "skills.json")
+        # FIXED: Removed 'data/' folder prefix. Now looks in the main folder.
+        skills_path = "skills.json" 
         with open(skills_path, "r", encoding="utf-8") as f:
             self.skills_db = json.load(f)
 
@@ -26,17 +27,14 @@ class ResumeProcessor:
         for skill in self.skills_db:
             clean_skill = skill.lower().strip()
             
-            # PASS 1: Strict Regex (Fastest and safest)
+            # PASS 1: Strict Regex
             pattern = r'\b' + re.escape(clean_skill) + r'\b'
             if re.search(pattern, text_content):
                 found_skills.add(skill)
                 continue
                 
-            # PASS 2: Fuzzy Matching (For misspellings & variations)
-            # Only apply fuzzy math to words longer than 3 letters to avoid 
-            # falsely matching languages like "C", "R", or "Go"
+            # PASS 2: Fuzzy Matching 
             if len(clean_skill) > 3:
-                # partial_ratio checks if the skill string is "embedded" in the text
                 if fuzz.partial_ratio(clean_skill, text_content) >= 90:
                     found_skills.add(skill)
                 
