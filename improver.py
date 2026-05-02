@@ -4,9 +4,9 @@ import os
 
 class ResumeImprover:
     def __init__(self):
-        # FIXED: Now securely grabs the key from Hugging Face Settings
+        
         self.api_key = os.getenv("GEMINI_API_KEY")
-        # Updated to the standard, stable Gemini Flash model
+        
         self.model = "gemini-3-flash-preview" 
         self.url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent?key={self.api_key}"
 
