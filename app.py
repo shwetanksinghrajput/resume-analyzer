@@ -6,7 +6,6 @@ import sys
 import time
 import google.generativeai as genai
 
-# Ensure required NLP models are present
 try:
     import en_core_web_sm
 except ImportError:
@@ -17,14 +16,12 @@ from processor import ResumeProcessor
 from matcher import ResumeMatcher
 from improver import ResumeImprover
 
-# Application Configuration
 st.set_page_config(page_title="Resume Analyzer", page_icon="🎯", layout="wide")
 
 api_key = os.getenv("GEMINI_API_KEY")
 if api_key:
     genai.configure(api_key=api_key)
 
-# Session State for Rate Limiting
 if 'last_api_call' not in st.session_state:
     st.session_state.last_api_call = 0
 
@@ -38,7 +35,6 @@ def check_rate_limit(cooldown_seconds=30):
     st.session_state.last_api_call = current_time
     return True
 
-# UI Styling
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;600&display=swap');
@@ -78,14 +74,12 @@ div.stButton > button {
 </style>
 """, unsafe_allow_html=True)
 
-# Initialize Core Processing Engines
 @st.cache_resource
 def load_engines():
     return ResumeProcessor(), ResumeMatcher(), ResumeImprover()
 
 processor, matcher, improver = load_engines()
 
-# Header Rendering
 def get_b64(file):
     try:
         with open(file, "rb") as f:
@@ -104,7 +98,6 @@ if logo_b64:
 else:
     st.markdown("<h1 style='color:#00fff2; font-family:Orbitron;'>🎯 RESUME ANALYZER</h1>", unsafe_allow_html=True)
 
-# Main Interface
 st.markdown('<div class="center-wrapper"><div class="matrix">', unsafe_allow_html=True)
 col1, col2 = st.columns(2, gap="large")
 
@@ -120,7 +113,6 @@ st.markdown('<div class="btn-container">', unsafe_allow_html=True)
 scan_trigger = st.button("🚀 INITIATE QUANTUM SCAN", use_container_width=True)
 st.markdown('</div></div></div>', unsafe_allow_html=True)
 
-# Execution Logic
 if scan_trigger:
     if not uploaded_file or not jd_text.strip():
         st.error("SYSTEM ERROR: Missing Source Resume or Target Specs.")
@@ -139,7 +131,6 @@ if scan_trigger:
             job_skills = processor.extract_skills(jd_text)
             score, missing_skills, matched_skills = matcher.calculate_match(resume_skills, job_skills)
             
-            # Display Score
             st.markdown(f"""
             <div style='margin-top:30px; padding:20px; text-align:center; border:2px solid #00fff2; 
                  border-radius:12px; color:#00fff2; font-family:Orbitron; font-size:26px; background:rgba(0,255,242,0.1);'>
@@ -147,7 +138,7 @@ if scan_trigger:
             </div>
             """, unsafe_allow_html=True)
             
-            # Display Skills
+        
             res_col1, res_col2 = st.columns(2)
             with res_col1:
                 st.markdown("<h3 style='color:#00fff2; font-family:Orbitron; font-size:18px; margin-top:20px;'>✅ Matched Skills</h3>", unsafe_allow_html=True)
@@ -167,7 +158,7 @@ if scan_trigger:
                     st.write("Resume covers all specs! 🎯")
                 st.markdown('</div>', unsafe_allow_html=True)
             
-            # AI Enhancements
+           
             st.markdown("<h3 style='color:#00fff2; font-family:Orbitron; font-size:18px; margin-top:30px;'>💡 AI Resume Enhancements</h3>", unsafe_allow_html=True)
             st.markdown('<div class="result-box">', unsafe_allow_html=True)
             if missing_skills:
