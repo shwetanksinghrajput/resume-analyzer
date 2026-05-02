@@ -1,6 +1,11 @@
 streamlit
-requests
+spacy
+google-generativeai
+python-dotenv
 pdfplumber
+PyMuPDF
+pandas
+plotly
 thefuzz
 python-Levenshtein
-spacy
+requests
